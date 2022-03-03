@@ -10,7 +10,9 @@ export default function Home() {
         <meta name="description" content="Bits&Bots landing page" />
       </Head>
 
-      <main className={styles.main}></main>
+      <main className={styles.main}>
+        <h1>Test</h1>
+      </main>
 
       <footer className={styles.footer}></footer>
     </div>
