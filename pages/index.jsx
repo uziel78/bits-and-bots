@@ -1,25 +1,20 @@
 import Head from "next/head";
 import styles from "../styles/LandingPage.module.scss";
-// import Video from "../public/pexels-ehab-el-gapry-6238188.mp4";
 
 export default function LandingPage() {
   return (
-    <>
-      <div className={styles.container}>
-        <Head>
-          <title>Bits&Bots</title>
-          <meta name="description" content="Bits&Bots landing page" />
-        </Head>
+    <div className={styles.container}>
+      <Head>
+        <title>Bits & Bots</title>
+        <meta name="description" content="Bits&Bots landing page" />
+      </Head>
 
-        {/* <Meta />
-        <Hero /> */}
+      <>
+        <div className="carousel__container">
+          <div className="carousel--animation"></div>
+        </div>
+        <h1>Landing Page</h1>
 
-        {/* <div className="xx">
-            <video autoPlay loop muted>
-              <source src={Video} type="video/mp4"></source>
-            </video>
-          </div> */}
-        <h1>Test</h1>
         <div>
           <div>
             <button>Login</button>
@@ -28,9 +23,7 @@ export default function LandingPage() {
             <button>Register</button>
           </div>
         </div>
-
-        <footer className="footer"></footer>
-      </div>
-    </>
+      </>
+    </div>
   );
 }

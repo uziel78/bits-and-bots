@@ -1,4 +1,8 @@
-// ---------- Common ---------- //
+@import "mixins";
+@import "variables";
+@import "typography";
+
+// ---------- COMMON ---------- //
 
 * {
   box-sizing: border-box;
@@ -9,27 +13,44 @@ body {
   padding: 0;
   margin: 0;
   height: 100%;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  max-width: 1920px;
+  margin: 0 auto;
+  background-color: $primary-dark;
+  color: $primary-text;
+  font-family: $secondary-font;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+html:focus-within {
+  scroll-behavior: smooth;
 }
 
 body {
   display: flex;
   flex-direction: column;
+  font-size: 16px;
 }
 
-.footer {
-  flex-shrink: 0;
+@media (min-width: $breakpoint-tablet) {
+  body {
+    font-size: 12px;
+  }
 }
 
 .wrapper {
   min-height: 100vh;
   padding: 4rem 0;
   flex: 1 0 auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  @include dark-radial;
+  @include center;
+}
+
+.container {
+  padding: 0 2rem;
 }
 
 a {
@@ -37,34 +58,55 @@ a {
   text-decoration: none;
 }
 
-// ---------- Global Typography ---------- //
+// ---------- LOADER ---------- // (move to component)
 
-h1 {
-  font-size: 56px;
+.carousel__container {
+  @include center;
+  padding: 2rem;
 }
 
-h2 {
-  font-size: 28px;
+.carousel--animation {
+  position: relative;
+  left: -9999px;
+  width: 12px;
+  height: 12px;
+  border-radius: 6px;
+  background-color: $primary-light;
+  color: $primary-light;
+  box-shadow: 9984px 0 0 0 $primary-light, 9999px 0 0 0 $primary-light,
+    10014px 0 0 0 $primary-light;
+  animation: dotCarousel 1.5s infinite linear;
 }
 
-h3 {
-  font-size: 21px;
+@keyframes dotCarousel {
+  0% {
+    box-shadow: 9984px 0 0 -1px $primary-light, 9999px 0 0 1px $primary-light,
+      10014px 0 0 -1px $primary-light;
+  }
+  50% {
+    box-shadow: 10014px 0 0 -1px $primary-light, 9984px 0 0 -1px $primary-light,
+      9999px 0 0 1px $primary-light;
+  }
+  100% {
+    box-shadow: 9999px 0 0 1px $primary-light, 10014px 0 0 -1px $primary-light,
+      9984px 0 0 -1px $primary-light;
+  }
 }
 
-h4 {
-  font-size: 18px;
+//loader default made by Zongbin. Source:  https://github.com/nzbin.
+
+// ---------- SCROLLBAR ---------- //
+
+body::-webkit-scrollbar {
+  width: 0.65rem;
 }
 
-h5 {
-  font-size: 14px;
+body::-webkit-scrollbar-track {
+  @include dark-radial;
 }
 
-p {
-  font-size: 12px;
+body::-webkit-scrollbar-thumb {
+  @include light-radial;
+  border-radius: 5px;
+  border: 2px solid $primary-dark;
 }
-
-// ---------- Loader ---------- //
-
-// ---------- Scrollbar ---------- //
-
-// ---------- Variables ---------- //

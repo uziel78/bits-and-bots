@@ -1,0 +1,59 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 1rem 10%;
+  height: 5rem;
+  background-color: $primary-dark;
+  border-bottom: 2px solid $primary-light;
+  font-family: $primary-font;
+
+  .logo {
+    font-size: 1.5rem;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $primary-light;
+  }
+
+  .navbar__navigation ul {
+    display: flex;
+    flex-direction: row;
+    text-decoration: none;
+    gap: 1.5rem;
+    color: $primary-light;
+  }
+
+  .navigation__link {
+    text-decoration: none;
+    list-style-type: none;
+  }
+
+  .navigation__link a {
+    font-size: 1rem;
+
+    &:hover,
+    &:active {
+      color: $main-highlight;
+      background: lighten($primary-dark, $amount: 15%);
+      padding: 5px;
+      @include rounded(5px);
+      cursor: pointer;
+    }
+  }
+
+  @media (min-width: $breakpoint-laptop) {
+    .logo {
+      font-size: 2.5rem;
+    }
+
+    .navigation_link a {
+      font-size: 1.5rem;
+    } //not working atm
+  }
+}

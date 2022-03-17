@@ -1,5 +1,5 @@
 function BrowsePage() {
-  return <div>Browse Page</div>;
+  return <h1>Browse Page</h1>;
 }
 
 export default BrowsePage;

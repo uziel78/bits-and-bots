@@ -1,0 +1,63 @@
+// ---------- MIXINS ---------- //
+
+// center content
+@mixin center {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+// rounded corners
+@mixin rounded($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
+
+//box shadows
+
+@mixin box-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $color: $primary-dark) {
+  box-shadow: $x-axis $y-axis $blur $color;
+} //sample use case:  @include box-shadow(5px, 5px, 5px, color variable)
+
+//linear gradient
+@mixin linear-green() {
+  background: rgb(68, 214, 44);
+  background: linear-gradient(
+    90deg,
+    rgba(68, 214, 44) 0%,
+    rgba(219, 255, 1) 100%
+  );
+}
+
+//radial gradients
+
+@mixin dark-radial() {
+  background: rgb(87, 87, 87);
+  background: radial-gradient(
+    circle,
+    rgba(87, 87, 87, 1) 0%,
+    rgba(17, 17, 17, 1) 100%
+  );
+}
+
+@mixin light-radial() {
+  background: rgb(68, 214, 44);
+  background: radial-gradient(
+    circle,
+    rgba(68, 214, 44, 1) 0%,
+    rgba(118, 228, 20, 1) 66%,
+    rgba(209, 240, 24, 1) 100%
+  );
+}
+
+@mixin grey-radial() {
+  background: rgb(17, 17, 17);
+  background: radial-gradient(
+    circle,
+    rgba(17, 17, 17, 1) 0%,
+    rgba(87, 87, 87, 1) 100%
+  );
+}

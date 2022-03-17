@@ -1,0 +1,25 @@
+// ---------- VARIABLES ---------- //
+
+// main colors
+$primary-dark: rgb(17, 17, 17);
+$primary-light: rgb(68, 214, 44);
+$secondary-dark: rgb(87, 87, 87);
+
+// text colors
+$primary-text: rgb(255, 255, 255);
+$secondary-text: rgb(153, 153, 153);
+$main-highlight: rgb(213, 187, 21);
+$secondary-highlight: rgb(219, 255, 1);
+
+//fonts, (found in :pages/_document.jsx)
+
+$primary-font: "Titillium Web", "Karla", Verdana, sans-serif;
+$secondary-font: "Montserrat", "Spectral", Arial, sans-serif;
+
+//breakpoints (used with min values)
+
+$breakpoint-mobile: 320px;
+$breakpoint-tablet: 481px;
+$breakpoint-laptop: 769px;
+$breakpoint-desktop: 1025px;
+$breakpoint-large-screen: 1201px;

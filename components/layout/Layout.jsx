@@ -1,14 +1,13 @@
-import { Fragment } from "react";
-import MainHeader from "./MainHeader";
-// import Footer from "./Footer";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 function Layout(props) {
   return (
-    <Fragment>
-      <MainHeader />
+    <>
+      <Navbar />
       <main className="wrapper">{props.children}</main>
-      {/* <Footer /> */}
-    </Fragment>
+      <Footer />
+    </>
   );
 }
 

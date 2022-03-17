@@ -1,4 +1,4 @@
-import classes from "./Hero.module.scss";
+import styles from "./Hero.module.scss";
 
 function Hero() {
   return <section></section>;
