@@ -1,10 +1,4 @@
 import styles from "./Footer.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faSearch,
-  faAmbulance,
-  faAnchor,
-} from "@fortawesome/free-solid-svg-icons";
 
 function Footer() {
   return (
@@ -15,22 +9,7 @@ function Footer() {
           <p>Strandgaten 195,</p>
           <p>5004, Bergen</p>
         </address>
-        <div className={styles.social}>
-          <FontAwesomeIcon
-            icon={faSearch}
-            style={{ fontSize: 20, color: "blue" }}
-          />
-
-          <FontAwesomeIcon
-            icon={faAmbulance}
-            style={{ fontSize: 20, color: "orange" }}
-          />
-
-          <FontAwesomeIcon
-            icon={faAnchor}
-            style={{ fontSize: 20, color: "green" }}
-          />
-        </div>
+        <div className={styles.social}>social</div>
       </div>
       <div>Copyright</div>
     </footer>
