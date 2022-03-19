@@ -9,7 +9,6 @@
   padding: 1rem 10%;
   height: 5rem;
   background-color: $primary-dark;
-  border-bottom: 2px solid $primary-light;
   font-family: $primary-font;
 
   .logo {
@@ -47,13 +46,19 @@
     }
   }
 
+  .border__box {
+    @include linear-gradient($primary-light, $secondary-highlight, 25deg);
+    height: 1px;
+    width: 100%;
+  }
+
   @media (min-width: $breakpoint-laptop) {
     .logo {
       font-size: 2.5rem;
     }
 
-    .navigation_link a {
+    .navigation__link a {
       font-size: 1.5rem;
-    } //not working atm
+    }
   }
 }

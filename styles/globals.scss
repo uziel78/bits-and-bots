@@ -57,6 +57,9 @@ a {
   color: inherit;
   text-decoration: none;
 }
+.background__video {
+  object-fit: fill;
+}
 
 // ---------- LOADER ---------- // (move to component)
 
@@ -65,7 +68,7 @@ a {
   padding: 2rem;
 }
 
-.carousel--animation {
+.carousel__container--animation {
   position: relative;
   left: -9999px;
   width: 12px;
@@ -98,7 +101,7 @@ a {
 // ---------- SCROLLBAR ---------- //
 
 body::-webkit-scrollbar {
-  width: 0.65rem;
+  width: 0.4rem;
 }
 
 body::-webkit-scrollbar-track {

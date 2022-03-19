@@ -1,7 +1,61 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
 .footer {
   flex-shrink: 0;
-  height: 100px;
   width: 100%;
-  color: white;
-  background-color: black;
+  background-color: $primary-dark;
+  color: $secondary-text;
+
+  .border__box {
+    @include linear-gradient($primary-light, $secondary-highlight, 45deg);
+    height: 1px;
+    width: 100%;
+  }
+
+  .footer__flexbox {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .container {
+    padding: 1rem;
+    width: 100%;
+    @include center;
+  }
+
+  .address p:hover,
+  .address p:active {
+    color: lighten($secondary-text, 20%);
+  }
+
+  .social {
+    background-color: $primary-dark;
+    @include center;
+    flex-direction: row;
+    width: 100%;
+    gap: 10%;
+    font-size: 28px;
+    padding: 1rem 0rem;
+    color: darken($primary-light, 15%);
+    transition: all 0.2s ease-in-out;
+
+    & a:hover,
+    & a:active {
+      color: yellow;
+      cursor: pointer;
+      transform: scale(1.2);
+    }
+  }
+
+  .legal {
+    text-align: center;
+    color: darken($secondary-text, 20%);
+  }
+
+  @media (min-width: $breakpoint-laptop) {
+    .footer__flexbox {
+      flex-direction: row;
+    }
+  }
 }
