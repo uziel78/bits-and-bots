@@ -5,9 +5,7 @@ function Layout(props) {
   return (
     <>
       <Navbar />
-      <main className="wrapper" className="background__video">
-        {props.children}
-      </main>
+      <main className="wrapper">{props.children}</main>
       <Footer />
     </>
   );

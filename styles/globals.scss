@@ -43,7 +43,6 @@ body {
 
 .wrapper {
   min-height: 100vh;
-  padding: 4rem 0;
   flex: 1 0 auto;
   @include dark-radial;
   @include center;
@@ -56,9 +55,6 @@ body {
 a {
   color: inherit;
   text-decoration: none;
-}
-.background__video {
-  object-fit: fill;
 }
 
 // ---------- LOADER ---------- // (move to component)
@@ -113,3 +109,5 @@ body::-webkit-scrollbar-thumb {
   border-radius: 5px;
   border: 2px solid $primary-dark;
 }
+
+// ---------- MEDIA QUERIES ---------- //

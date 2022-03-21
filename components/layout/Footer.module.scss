@@ -13,6 +13,11 @@
     width: 100%;
   }
 
+  .slogan {
+    text-align: center;
+    //padding: 0rem 2rem;
+  }
+
   .footer__flexbox {
     display: flex;
     flex-direction: column;
@@ -42,7 +47,7 @@
 
     & a:hover,
     & a:active {
-      color: yellow;
+      color: $main-highlight;
       cursor: pointer;
       transform: scale(1.2);
     }

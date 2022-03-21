@@ -20,10 +20,14 @@ function Footer() {
   return (
     <footer className={styles.footer}>
       <div className={styles.border__box}></div>
+      <div className={styles.border__box}></div>
+      <div className={styles.slogan}>
+        <h1>When you want games, fast &#38; secure...</h1>
+      </div>
       <div className={styles.footer__flexbox}>
         <div className={styles.container}>
           <address className={styles.address}>
-            <p>Bits & Bots</p>
+            <p>Bits &#38; Bots</p>
             <p>Strandgaten 195</p>
             <p>5004, Bergen</p>
             <p>Norway</p>
