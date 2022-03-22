@@ -36,16 +36,16 @@ function Footer() {
           </address>
         </div>
         <div className={styles.social}>
-          <a href="https://discord.com/" target="_blank">
+          <a href="https://discord.com/" target="_blank" rel="noreferrer">
             <FontAwesomeIcon icon={faDiscord} />
           </a>
-          <a href="https://twitch.com/" target="_blank">
+          <a href="https://twitch.com/" target="_blank" rel="noreferrer">
             <FontAwesomeIcon icon={faTwitch} />
           </a>
-          <a href="https://www.youtube.com/" target="_blank">
+          <a href="https://www.youtube.com/" target="_blank" rel="noreferrer">
             <FontAwesomeIcon icon={faYoutube} />
           </a>
-          <a href="https://twitter.com/" target="_blank">
+          <a href="https://twitter.com/" target="_blank" rel="noreferrer">
             <FontAwesomeIcon icon={faTwitter} />
           </a>
         </div>

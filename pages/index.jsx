@@ -6,8 +6,8 @@ export default function LandingPage() {
   return (
     <div className={styles.container}>
       <Head>
-        <title>Bits & Bots</title>
-        <meta name="description" content="Bits&Bots landing page" />
+        <title>Bits & Bots webstore</title>
+        <meta name="description" content="Bits&Bots webstore page" />
       </Head>
 
       <>
