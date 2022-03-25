@@ -22,7 +22,7 @@ function Footer() {
       <div className={styles.border__box}></div>
       <div className={styles.border__box}></div>
       <div className={styles.slogan}>
-        <h1>When you want games, fast &#38; secure...</h1>
+        <h2>When you want the latest games now...</h2>
       </div>
       <div className={styles.footer__flexbox}>
         <div className={styles.container}>

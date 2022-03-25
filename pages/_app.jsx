@@ -1,15 +1,15 @@
 import Head from "next/head";
 import "../styles/globals.scss";
 import Layout from "../components/layout/Layout";
+import { AuthProvider } from "../components/common/AuthContext";
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Head>
-        <meta name="viewport" content="device-width, initial-scale=1" />
-      </Head>
-      <Component {...pageProps} />
-    </Layout>
+    <AuthProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </AuthProvider>
   );
 }
 
