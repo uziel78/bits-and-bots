@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import axios from "axios";
-import AuthContext from "../components/common/AuthContext";
+import AuthContext from "../components/context/AuthContext";
 import { BASE_URL } from "pages/api/api";
 
 // ========== custom useAxios Hook ==========
@@ -9,17 +9,17 @@ import { BASE_URL } from "pages/api/api";
 const url = BASE_URL;
 
 export default function useAxios() {
-	const [auth] = useContext(AuthContext);
+  const [auth] = useContext(AuthContext);
 
-	const apiClient = axios.create({
-		baseURL: url,
-	});
+  const apiClient = axios.create({
+    baseURL: url,
+  });
 
-	apiClient.interceptors.request.use(function (config) {
-		const token = auth.token;
-		config.headers.Authorization = token ? `Bearer ${token}` : "";
-		return config;
-	});
+  apiClient.interceptors.request.use(function (config) {
+    const token = auth.token;
+    config.headers.Authorization = token ? `Bearer ${token}` : "";
+    return config;
+  });
 
-	return apiClient;
+  return apiClient;
 }

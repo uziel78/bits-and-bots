@@ -1,0 +1,31 @@
+@import "./variables";
+
+.form {
+  background-color: $secondary-dark;
+  border: 1px solid $main-highlight;
+  border-radius: 5px;
+  padding: 20px;
+  margin-top: 5rem;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.input {
+  border-radius: 3px;
+  height: 2rem;
+}
+
+.textarea {
+  border-radius: 3px;
+  min-height: 5rem;
+}
+
+.errors {
+  color: $secondary-highlight;
+}

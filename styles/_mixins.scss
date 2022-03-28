@@ -18,6 +18,18 @@
 
 //box shadows
 
+@mixin box-shadows($color1, $color2) {
+  bow-shadow: 0 5px 10px $color1, 0 15px 40px $color2;
+}
+//use-case example: @include box-shadow($primary, $secondary);
+
+//text shadows
+
+@mixin text-shadow($x: 2px, $y: 2px, $blur: 5px, $color: rgba(0, 0, 0, 0.4)) {
+  text-shadow: $x $y $blur $color;
+}
+//use case example: @include text-shadow(2, 2, 5, rgba(0,0,0,.4));
+
 @mixin box-shadow($x-axis: 0, $y-axis: 1px, $blur: 2px, $color: $primary-dark) {
   box-shadow: $x-axis $y-axis $blur $color;
 } //sample use case:  @include box-shadow(5px, 5px, 5px, color variable)

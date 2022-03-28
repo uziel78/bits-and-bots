@@ -8,11 +8,15 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
+import { faEnvelope, faPhone } from "@fortawesome/free-solid-svg-icons";
+
 library.add(
   faDiscord,
   faTwitch,
   faYoutube,
-  faTwitter
+  faTwitter,
+  faEnvelope,
+  faPhone
   // more icons go here
 );
 
@@ -22,7 +26,7 @@ function Footer() {
       <div className={styles.border__box}></div>
       <div className={styles.border__box}></div>
       <div className={styles.slogan}>
-        <h2>When you want the latest games now...</h2>
+        <h1>The latest games. Now!</h1>
       </div>
       <div className={styles.footer__flexbox}>
         <div className={styles.container}>
@@ -31,8 +35,18 @@ function Footer() {
             <p>Strandgaten 195</p>
             <p>5004, Bergen</p>
             <p>Norway</p>
-            <p>email: Bits&Bots@one.com</p>
-            <p>Phone: 555-996699</p>
+            <p>
+              <span>
+                <FontAwesomeIcon icon={faEnvelope} />
+              </span>{" "}
+              Bits&Bots@one.com
+            </p>
+            <p>
+              <span>
+                <FontAwesomeIcon icon={faPhone} />
+              </span>{" "}
+              555-996699
+            </p>
           </address>
         </div>
         <div className={styles.social}>

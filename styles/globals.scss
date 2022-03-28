@@ -35,12 +35,6 @@ body {
   font-size: 16px;
 }
 
-@media (min-width: $breakpoint-tablet) {
-  body {
-    font-size: 12px;
-  }
-}
-
 .wrapper {
   min-height: 100vh;
   flex: 1 0 auto;
@@ -60,17 +54,7 @@ a {
 // ---------- SCROLLBAR ---------- //
 
 body::-webkit-scrollbar {
-  width: 0.4rem;
-}
-
-body::-webkit-scrollbar-track {
-  @include dark-radial;
-}
-
-body::-webkit-scrollbar-thumb {
-  @include light-radial;
-  border-radius: 5px;
-  border: 2px solid $primary-dark;
+  display: none;
 }
 
 // ---------- MEDIA QUERIES ---------- //

@@ -1,7 +1,6 @@
-import Head from "next/head";
 import "../styles/globals.scss";
 import Layout from "../components/layout/Layout";
-import { AuthProvider } from "../components/common/AuthContext";
+import { AuthProvider } from "../components/context/AuthContext";
 
 function MyApp({ Component, pageProps }) {
   return (
