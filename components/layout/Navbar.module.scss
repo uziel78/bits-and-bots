@@ -6,7 +6,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0rem 5%;
+  padding: 0rem 20px;
   height: 80px;
   background-color: $primary-dark;
   font-family: $primary-font;
@@ -29,7 +29,7 @@
 
     &:hover,
     &:active {
-      color: $main-highlight;
+      color: $secondary-highlight;
       background: lighten($primary-dark, $amount: 15%);
       padding: 5px;
       @include rounded(5px);

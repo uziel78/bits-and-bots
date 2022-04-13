@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 400 80" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <rect id="Logo-tranparent-background" serif:id="Logo tranparent background" x="0" y="0" width="400" height="80" style="fill:none;"/>
+    <g id="Logo-tranparent-background1" serif:id="Logo tranparent background">
+        <g id="Layer1">
+            <g transform="matrix(0.92584,0,0,0.423611,13.1483,22.8819)">
+                <path d="M25,81.721L2,81.721L11,5L36.969,5L49,20L61,5L86,5L95.969,82.902L75.031,82.902L59.156,56.918L37.938,56.918L25,81.721Z" style="fill:none;stroke:rgb(0,242,0);stroke-width:9.28px;"/>
+            </g>
+            <g transform="matrix(0.479141,0.245669,-0.496927,0.301197,68.3045,14.0424)">
+                <rect x="67" y="25" width="9" height="18" style="fill:rgb(218,186,0);stroke:rgb(218,186,0);stroke-width:2.48px;"/>
+            </g>
+            <g transform="matrix(0.479141,0.245669,-0.496927,0.301197,60.6011,9.67499)">
+                <rect x="67" y="25" width="9" height="18" style="fill:rgb(0,218,0);stroke:rgb(0,218,0);stroke-width:2.48px;"/>
+            </g>
+            <g transform="matrix(0.747464,0,0,0.41669,15.2979,23.2475)">
+                <path d="M30,33.003L30,25L22,25L22,32.997L14.003,32.99L13.997,40.99L22,40.997L22,49L30,49L30,41.003L37.997,41.01L38.003,33.01L30,33.003Z" style="fill:rgb(153,153,153);stroke:rgb(153,153,153);stroke-width:1.58px;"/>
+            </g>
+        </g>
+        <g transform="matrix(0.877466,0,0,0.934006,47.9716,-5.96572)">
+            <text x="81px" y="72px" style="font-family:'TitilliumWeb-Bold', 'Titillium Web';font-weight:700;font-size:64px;fill:rgb(0,242,0);">Bits &amp; Bots</text>
+        </g>
+    </g>
+</svg>

@@ -54,7 +54,7 @@
 
     & a:hover,
     & a:active {
-      color: $main-highlight;
+      color: $secondary-highlight;
       cursor: pointer;
       transform: scale(1.2);
     }
@@ -63,6 +63,11 @@
   .legal {
     text-align: center;
     color: darken($secondary-text, 20%);
+
+    &:hover,
+    &:active {
+      color: $secondary-highlight;
+    }
   }
 
   @media (min-width: $breakpoint-laptop) {

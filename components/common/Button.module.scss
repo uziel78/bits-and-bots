@@ -1,16 +1,27 @@
 @import "../../styles//variables";
+@import "../../styles//mixins";
 
 .btn {
   color: $primary-dark;
   background-color: $primary-light;
+  opacity: 0.9;
   height: 3rem;
-  border-radius: 5px;
+  padding: 10px;
   font-size: 1.5rem;
-  margin-top: 2rem;
+  font-weight: 500;
+  font-family: $secondary-font;
+  cursor: pointer;
+  @include rounded(5px);
+
+  &:hover,
+  &:active {
+    color: $primary-light;
+    background-color: $primary-dark;
+    border: 1px solid $primary-light;
+    opacity: 0.8;
+  }
 }
 
-.btn:hover,
-.btn:active {
-  color: $primary-light;
-  background-color: $primary-dark;
+.btn__container {
+  margin: 24px;
 }

@@ -1,9 +1,11 @@
+//import Button from "../common/Button";
+import UserModals from "./UserModals";
 import styles from "./Hero.module.scss";
 
 function Hero() {
   return (
     <section className={styles.hero}>
-      <video autoPlay loop className={styles.hero__video}>
+      <video autoPlay loop muted className={styles.hero__video}>
         <source
           src="/pexels-ehab-el-gapry-6238188.mp4"
           type="video/mp4"
@@ -13,10 +15,10 @@ function Hero() {
 
       <div className={styles.btn__container}>
         <div>
-          <button>Login</button>
+          <Button link="/login">Login</Button>
         </div>
         <div>
-          <button>Register</button>
+          <Button link="/register">Register</Button>
         </div>
       </div>
     </section>
