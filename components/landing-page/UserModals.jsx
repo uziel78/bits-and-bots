@@ -1,50 +1,33 @@
+import { useState } from "react";
+import Button from "../common/Button";
+import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
+import styles from "./UserModals.module.scss";
 
+const UserModals = () => {
+  const [registerModal, setRegisterModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
 
-function Modals() {
-  return (
-    <div>Modals</div>
-  )
-}
-
-export default Modals;
-
-
-
-
-
-
-//login page
-
-import Meta from "../components/common/Meta";
-import Header from "../components/layout/Header";
-import LoginForm from "../components/landing-page/LoginForm";
-
-function LoginPage() {
   return (
     <>
-      <Meta title="Bits & Bits Login" />
-      <Header content="Login" />
-      <LoginForm />
+      <div className={styles.btn__modal}>
+        <div>
+          <Button type="button" onClick={() => setRegisterModal(true)}>
+            Register
+          </Button>
+        </div>
+        <div>
+          <Button type="button" onClick={() => setLoginModal(true)}>
+            Login
+          </Button>
+        </div>
+        {/* conditionally render modals on button clicks */}
+        {registerModal ? <RegisterForm /> : null}
+        {loginModal ? <LoginForm /> : null}
+        {/* close modal with button by resetting setRegisterModal(false) again on onClick */}
+      </div>
     </>
   );
-}
+};
 
-export default LoginPage;
-
-// register page
-
-import Meta from "../components/common/Meta";
-import Header from "../components/layout/Header";
-// import RegisterForm component
-
-function RegisterPage() {
-  return (
-    <>
-      <Meta title="Bits & Bits Register Form" />
-      <Header content="Register" />
-      {/* <div>Register Form</div> */}
-    </>
-  );
-}
-
-export default RegisterPage;
+export default UserModals;

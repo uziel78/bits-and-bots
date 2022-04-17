@@ -1,31 +1,63 @@
 @import "./variables";
+@import "./mixins";
+@import "./typography";
 
-.form {
-  background-color: $secondary-dark;
-  border: 1px solid $main-highlight;
-  border-radius: 5px;
-  padding: 20px;
-  margin-top: 5rem;
-  max-width: 800px;
+form {
+  background-color: darken($secondary-highlight, 3%);
+  border: none;
+  opacity: 0.95;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
+  z-index: 100;
+  @include center;
+  @include rounded(5px);
 }
 
-.label {
-  font-size: 0.8rem;
-  margin-top: 5px;
+fieldset {
+  color: black;
+  padding: 2rem;
+  border: none;
 }
 
-.input {
+label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: $primary-dark;
+}
+
+input {
   border-radius: 3px;
   height: 2rem;
+  margin: 0.5rem 0rem;
+  background-color: $primary-dark;
+  color: $secondary-highlight;
+  width: 100%;
+  @include rounded(5px);
 }
 
-.textarea {
-  border-radius: 3px;
-  min-height: 5rem;
+button {
+  font-family: $primary-font;
+  font-weight: 700;
+  font-size: 1.2rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  width: 100%;
+  min-height: 2rem;
+  background-color: darken($primary-light, 15%);
+  @include rounded(5px);
+
+  &:hover,
+  &:active {
+    background-color: $primary-dark;
+    color: $primary-light;
+  }
+}
+
+.exit__btn {
+  background-color: darken($main-highlight, 15%);
 }
 
 .errors {
-  color: $secondary-highlight;
+  color: $primary-dark;
 }

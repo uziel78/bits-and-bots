@@ -21,7 +21,7 @@ function Navbar() {
         <Logo />
 
         <nav className={styles.navbar__navigation}>
-          {auth && (
+          {/* {auth && (
             <ul>
               <li className={styles.navigation__link}>
                 <Link>
@@ -29,7 +29,7 @@ function Navbar() {
                 </Link>
               </li>
             </ul>
-          )}
+          )} */}
         </nav>
       </header>
     </>
