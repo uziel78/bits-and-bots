@@ -4,26 +4,28 @@ import { useRouter } from "next/router";
 
 // ========== missing Page component that renders a 404 page ===========
 
-const missingPage = () => {
+const MissingPage = () => {
   const router = useRouter();
 
   useEffect(() => {
     setTimeout(() => {
       router.push("/");
-    }, 5000); // push return to Home after 5 seconds
+    }, 5000); // push return to previous page after 5 seconds
   }, []);
 
   return (
-    <div className="not-found">
-      <h1>Sorry...</h1>
-      <h2>That page cannot be found. Go back!</h2>
+    <div className="not__found">
+      <h2>Sorry...</h2>
+      <h3>That page cannot be found. Go back!</h3>
       <p>
         <Link href="/">
-          <a>Back to Homepage...</a>
+          <a>
+            Back to <span>Homepage...</span>
+          </a>
         </Link>
       </p>
     </div>
   );
 };
 
-export default missingPage;
+export default MissingPage;

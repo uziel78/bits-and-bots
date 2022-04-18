@@ -49,10 +49,16 @@ export default function LoginForm() {
 
     console.log(data);
 
+    //path
     const url = TOKEN_PATH;
+    //token
+    const options = {
+      headers: { Authorization: `Bearer ${token}` },
+    };
 
+    //axios API call
     try {
-      const response = await axios.post(url, data);
+      const response = await axios.post(url, options, data);
       console.log("response", response.data);
       //setAuth(response.data);
       router.push("/games");

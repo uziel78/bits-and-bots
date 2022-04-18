@@ -39,7 +39,7 @@ function RegisterForm() {
     event.preventDefault();
     setSubmitting(true);
     setRegisterError(null);
-    //setAuth(data);
+    setAuth(data);
     console.log(data);
   }
 
