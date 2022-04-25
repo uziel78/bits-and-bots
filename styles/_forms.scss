@@ -5,18 +5,29 @@
 form {
   background-color: darken($secondary-highlight, 3%);
   border: none;
-  opacity: 0.95;
+  opacity: 0.97;
   max-width: 600px;
   display: flex;
   flex-direction: column;
   z-index: 100;
+  padding: 1rem;
   @include center;
   @include rounded(5px);
 }
 
+h2 {
+  color: $primary-dark;
+  text-decoration: underline;
+  margin: 10px;
+}
+
+h4 {
+  margin: 10px 0px;
+}
+
 fieldset {
   color: black;
-  padding: 2rem;
+  padding: 1rem;
   border: none;
 }
 
@@ -42,8 +53,9 @@ button {
   font-size: 1.2rem;
   cursor: pointer;
   margin-top: 1rem;
-  width: 100%;
+  width: 150px;
   min-height: 2rem;
+  box-shadow: 1px 2px $secondary-dark;
   background-color: darken($primary-light, 15%);
   @include rounded(5px);
 
@@ -51,11 +63,31 @@ button {
   &:active {
     background-color: $primary-dark;
     color: $primary-light;
+    box-shadow: none;
   }
 }
 
 .exit__btn {
   background-color: darken($main-highlight, 15%);
+  margin: 10px 0px;
+}
+
+.terms {
+  font-size: 0.8rem;
+  margin: 10px 0px;
+
+  .terms__link {
+    text-decoration: underline;
+
+    &:hover,
+    &:active {
+      cursor: pointer;
+    }
+  }
+}
+
+.registered {
+  margin: 5px 0px;
 }
 
 .errors {

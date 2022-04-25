@@ -2,7 +2,8 @@ import { useState } from "react";
 
 // ========== hook found at from "https://usehooks.com/useLocalStorage/" ==========
 
-//next.js fixed:
+//updated for next.js version:
+
 export default function useLocalStorage(key, initialValue) {
   // State to store our value
   // Pass initial state function to useState so logic is only executed once

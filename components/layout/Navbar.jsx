@@ -10,7 +10,7 @@ function Navbar() {
   const router = useRouter();
 
   //function to handle logout link in navbar (only visible if logged in)
-  function handleLogout() {
+  function HandleLogout() {
     setAuth(null);
     router.push("/");
   }
@@ -25,7 +25,7 @@ function Navbar() {
             <ul>
               <li className={styles.navigation__link}>
                 <Link>
-                  <a onClick={handleLogout}>Logout</a>
+                  <a onClick={HandleLogout}>Logout</a>
                 </Link>
               </li>
             </ul>

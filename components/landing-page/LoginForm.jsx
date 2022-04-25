@@ -3,15 +3,15 @@ import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
-import axios from "axios";
 import FormError from "../common/FormError";
-import { TOKEN_PATH } from "../../pages/api/api";
+import Backdrop from "../common/Backdrop";
+import { CORS_FIX, BASE_URL, HEADER } from "../../pages/api/api";
 import AuthContext from "../context/AuthContext";
 
 // ---------- yup validation ---------- //
 const schema = yup.object().shape({
-  email: yup.string().email().required("Please enter your email"),
-  password: yup.string().required("Please enter your password"),
+  email: yup.string().email().required("Please enter your email above"),
+  password: yup.string().required("Please enter your password above"),
 });
 
 // ---------- Login Form Function ---------- //
@@ -39,66 +39,72 @@ export default function LoginForm() {
     resolver: yupResolver(schema),
   });
 
-  async function onSubmit(data) {
-    event.preventDefault();
+  function onSubmit(data) {
+    //event.preventDefault();
     setSubmitting(true);
     setLoginError(null);
 
-    //check if email & password in localStorage = login input values
-    //if yes, push to games, if not, error message
+    if (data === JSON.stringify(auth)) {
+      router.push("/games");
+    }
 
-    console.log(data);
+    //check if email & password in localStorage = login input values
+    //if yes, push to API call browse page, if not, error message
+
+    //console.log(data);
 
     //path
-    const url = TOKEN_PATH;
-    //token
-    const options = {
-      headers: { Authorization: `Bearer ${token}` },
-    };
+    const url = CORS_FIX + BASE_URL;
+    //User & method
+    const credentials = HEADER;
 
     //axios API call
-    try {
-      const response = await axios.post(url, options, data);
-      console.log("response", response.data);
-      //setAuth(response.data);
-      router.push("/games");
-    } catch (error) {
-      console.log("error", error);
-      setLoginError(error.toString());
-    } finally {
-      setSubmitting(false);
-    }
+    //   try {
+    //     const response = await axios.post(url, credentials, data);
+    //     console.log("response", response.data);
+    //     setAuth(response.data);
+    //     router.push("/games");
+    //   } catch (error) {
+    //     console.log("error", error);
+    //     setLoginError(error.toString());
+    //   } finally {
+    //     setSubmitting(false);
+    //   }
+    // }
+
+    return (
+      <>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          {loginError && <FormError>{loginError}</FormError>}
+          <fieldset disabled={submitting}>
+            <div>
+              <input
+                {...register("email")}
+                name="email"
+                type="email"
+                placeholder="email"
+              />
+              {errors.email && <FormError>{errors.email.message}</FormError>}
+            </div>
+
+            <div>
+              <input
+                {...register("password")}
+                name="password"
+                type="password"
+                placeholder="password"
+              />
+              {errors.password && (
+                <FormError>{errors.password.message}</FormError>
+              )}
+            </div>
+            <button type="submit" disabled={submitting}>
+              {submitting ? "Logging In..." : "Login"}
+            </button>
+          </fieldset>
+        </form>
+        <Backdrop />
+      </>
+    );
   }
-
-  return (
-    <>
-      <form onSubmit={handleSubmit(onSubmit)}>
-        {loginError && <FormError>{loginError}</FormError>}
-        <fieldset disabled={submitting}>
-          <div>
-            <input
-              {...register("email")}
-              name="email"
-              type="email"
-              placeholder="email"
-            />
-            {errors.email && <FormError>{errors.email.message}</FormError>}
-          </div>
-
-          <div>
-            <input
-              {...register("password")}
-              name="password"
-              type="password"
-              placeholder="password"
-            />
-            {errors.password && (
-              <FormError>{errors.password.message}</FormError>
-            )}
-          </div>
-          <button>{submitting ? "Login In..." : "Login"}</button>
-        </fieldset>
-      </form>
-    </>
-  );
 }

@@ -11,7 +11,7 @@ const MissingPage = () => {
     setTimeout(() => {
       router.push("/");
     }, 5000); // push return to previous page after 5 seconds
-  }, []);
+  }, [router]);
 
   return (
     <div className="not__found">
