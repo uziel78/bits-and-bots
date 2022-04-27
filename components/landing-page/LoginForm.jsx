@@ -4,8 +4,7 @@ import { useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import FormError from "../common/FormError";
-import Backdrop from "../common/Backdrop";
-import { CORS_FIX, BASE_URL, HEADER } from "../../pages/api/api";
+import UserModals from "./UserModals";
 import AuthContext from "../context/AuthContext";
 
 // ---------- yup validation ---------- //
@@ -21,10 +20,12 @@ const schema = yup.object().shape({
 //redirected to the browse page, otherwise an “Incorrect username or password”
 //message must be displayed.
 
-export default function LoginForm() {
+const LoginForm = () => {
   //state variables
   const [submitting, setSubmitting] = useState(false);
   const [loginError, setLoginError] = useState(null);
+  const [loginForm, setLoginForm] = useState(true);
+  const [userModals, setUserModals] = useState(false);
 
   //context & routing initialized
   const [auth, setAuth] = useContext(AuthContext);
@@ -39,72 +40,82 @@ export default function LoginForm() {
     resolver: yupResolver(schema),
   });
 
+  //check if email & password in localStorage = login input values
+  //if yes, push to API call browse page, if not, error message
+
   function onSubmit(data) {
-    //event.preventDefault();
     setSubmitting(true);
     setLoginError(null);
 
-    if (data === JSON.stringify(auth)) {
+    //data must match auth object and neither can be null for login to be successful
+    // not that it technically can be null due to the register yup validation
+    if (JSON.stringify(data) === JSON.stringify(auth) && data !== null) {
       router.push("/games");
+      //console.log(data, auth);
+    } else {
+      setLoginError(true);
+      console.log("failed password match");
     }
+  }
 
-    //check if email & password in localStorage = login input values
-    //if yes, push to API call browse page, if not, error message
-
-    //console.log(data);
-
-    //path
-    const url = CORS_FIX + BASE_URL;
-    //User & method
-    const credentials = HEADER;
-
-    //axios API call
-    //   try {
-    //     const response = await axios.post(url, credentials, data);
-    //     console.log("response", response.data);
-    //     setAuth(response.data);
-    //     router.push("/games");
-    //   } catch (error) {
-    //     console.log("error", error);
-    //     setLoginError(error.toString());
-    //   } finally {
-    //     setSubmitting(false);
-    //   }
-    // }
-
-    return (
-      <>
+  //function that handles the cancel button on register form
+  function exitHandler() {
+    setLoginForm(false);
+    setUserModals(true);
+    setLoginError(null);
+  }
+  // conditionally render login form
+  return (
+    <>
+      {loginForm ? (
         <form onSubmit={handleSubmit(onSubmit)}>
-          {loginError && <FormError>{loginError}</FormError>}
+          <h2>Please Log In</h2>
+          {loginError && (
+            <FormError>{"Incorrect username or password"}</FormError>
+          )}
           <fieldset disabled={submitting}>
+            <h4>Login here</h4>
             <div>
+              <label>Enter your email below:</label>
               <input
                 {...register("email")}
-                name="email"
+                email="email"
                 type="email"
-                placeholder="email"
+                placeholder="Enter your email here..."
+                autoComplete="off"
               />
-              {errors.email && <FormError>{errors.email.message}</FormError>}
+              {errors.email && (
+                <FormError>| {errors.email.message} |</FormError>
+              )}
             </div>
 
             <div>
+              <label>Enter your password below:</label>
               <input
                 {...register("password")}
-                name="password"
+                password="password"
                 type="password"
-                placeholder="password"
+                placeholder="Enter your password here..."
+                autoComplete="off"
               />
               {errors.password && (
-                <FormError>{errors.password.message}</FormError>
+                <FormError>| {errors.password.message} |</FormError>
               )}
             </div>
-            <button type="submit" disabled={submitting}>
-              {submitting ? "Logging In..." : "Login"}
-            </button>
+            <div>
+              <button type="submit" disabled={submitting}>
+                {submitting ? "Logging In..." : "Login"}
+              </button>
+              <button type="button" className="exit__btn" onClick={exitHandler}>
+                Back
+              </button>
+            </div>
           </fieldset>
         </form>
-        <Backdrop />
-      </>
-    );
-  }
-}
+      ) : null}
+      {userModals ? <UserModals /> : null}
+    </>
+  );
+};
+
+export default LoginForm;

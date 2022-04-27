@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useRouter } from "next/router";
 import AuthContext from "../context/AuthContext";
 import Logo from "./logo";
@@ -15,21 +15,22 @@ function Navbar() {
     router.push("/");
   }
 
+  // render logo on navbar plus conditional logout button
   return (
     <>
       <header className={styles.navbar}>
         <Logo />
 
         <nav className={styles.navbar__navigation}>
-          {!setAuth && (
+          {auth ? (
             <ul>
               <li className={styles.navigation__link}>
-                <Link>
+                <Link href="/">
                   <a onClick={HandleLogout}>Logout</a>
                 </Link>
               </li>
             </ul>
-          )}
+          ) : null}
         </nav>
       </header>
     </>

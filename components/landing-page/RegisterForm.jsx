@@ -28,7 +28,7 @@ const schema = yup.object().shape({
 // ---------- RegisterForm Function ---------- //
 
 // function that renders and handles the Register Form component
-function RegisterForm() {
+const RegisterForm = () => {
   //state variables
   const [submitting, setSubmitting] = useState(false);
   const [registerError, setRegisterError] = useState(null);
@@ -54,10 +54,8 @@ function RegisterForm() {
     setRegisterError(null);
     setRegisterError("Successfully Registered! -Hooray...");
     setAuth(data);
-    setRegisterForm(false);
-    setUserModals(true);
-    //setBackdropIsActive(false);
     console.log(data);
+    setSubmitting(false);
   }
 
   //function that handles the cancel button on register form
@@ -65,7 +63,6 @@ function RegisterForm() {
     setUserModals(true);
     setRegisterForm(false);
     setRegisterError(null);
-    setAuth(null);
     console.log("exit");
   }
 
@@ -78,7 +75,7 @@ function RegisterForm() {
         <form onSubmit={handleSubmit(onSubmit)}>
           <h2>Register</h2>
           {registerError && <FormError>{registerError}</FormError>}
-          <fieldset>
+          <fieldset disabled={submitting}>
             <h4>Register your account here</h4>
             <div>
               <label>Enter your email below:</label>
@@ -118,7 +115,7 @@ function RegisterForm() {
             <div>
               <p className="registered">Already Registered?</p>
               <button type="button" className="exit__btn" onClick={exitHandler}>
-                Cancel
+                Back
               </button>
             </div>
           </fieldset>
@@ -128,6 +125,6 @@ function RegisterForm() {
       {/* {backdropIsActive ? <Backdrop /> : null} */}
     </>
   );
-}
+};
 
 export default RegisterForm;
