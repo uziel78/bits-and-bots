@@ -1,0 +1,29 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.card {
+  height: 485.4px;
+  width: 300px;
+  border: 2px solid $primary-light;
+  color: $primary-text;
+  background-color: $primary-dark;
+  z-index: 1;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.034), 0 2px 4px rgba(91, 238, 68, 0.048),
+    0 4px 8px rgba(91, 238, 68, 0.06), 0 8px 16px rgba(91, 238, 68, 0.072),
+    0 16px 32px rgba(91, 238, 68, 0.086), 0 32px 64px rgba(91, 238, 68, 0.12);
+  @include rounded(5px);
+  transition: transform 0.2s ease;
+
+  &:hover,
+  &:focus,
+  &:active {
+    transform: scale(1.1);
+    z-index: 0;
+    box-shadow: 0 2.8px 2.2px rgba(0, 0, 0, 0.034),
+      0 6.7px 5.3px rgba(219, 255, 1, 0.048),
+      0 12.5px 10px rgba(219, 255, 1, 0.06),
+      0 22.3px 17.9px rgba(219, 255, 1, 0.072),
+      0 41.8px 33.4px rgba(219, 255, 1, 0.086),
+      0 100px 80px rgba(219, 255, 1, 0.12);
+  }
+}

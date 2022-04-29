@@ -1,40 +1,84 @@
-//import { CORS_FIX, BASE_URL, HEADER } from "../../pages/api/api";
+import Meta from "../../components/common/Meta";
+import Loader from "../../components/common/Loader";
+import Paragraph from "../../components/common/Paragraph";
+import Card from "../../components/game-page/Card";
+import axios from "axios";
+import {
+  CORS_FIX,
+  BASE_URL,
+  GAMES_URL,
+  HEADER,
+  DATA,
+} from "../../pages/api/api";
 
-const BrowsePage = () => {
-  return <h1>Browse Page</h1>;
+import styles from "../../styles/page-styles/game-page.module.scss";
 
-  //path
-  const url = CORS_FIX + BASE_URL;
-  //User & method
-  const credentials = HEADER;
+// ---------- Browse Page Function ---------- //
 
-  //test from twitch doc
-  // axios({
-  //   url: "https://api.igdb.com/v4/games",
-  //   method: "POST",
-  //   },
-  //   data: "fields age_ratings,aggregated_rating,aggregated_rating_count,alternative_names,artworks,bundles,category,checksum,collection,cover,created_at,dlcs,expanded_games,expansions,external_games,first_release_date,follows,forks,franchise,franchises,game_engines,game_modes,genres,hypes,involved_companies,keywords,multiplayer_modes,name,parent_game,platforms,player_perspectives,ports,rating,rating_count,release_dates,remakes,remasters,screenshots,similar_games,slug,standalone_expansions,status,storyline,summary,tags,themes,total_rating,total_rating_count,updated_at,url,version_parent,version_title,videos,websites;",
-  // })
-  //   .then((response) => {
-  //     console.log(response.data);
-  //   })
-  //   .catch((err) => {
-  //     console.error(err);
-  //   });
+export default function BrowsePage(props) {
+  //rendered from getStaticProps
+  console.log(props);
+  return (
+    <>
+      <Meta description="browse games page" />
 
-  //axios API call
-  //   try {
-  //     const response = await axios.post(url, credentials, data);
-  //     console.log("response", response.data);
-  //     setAuth(response.data);
-  //     router.push("/games");
-  //   } catch (error) {
-  //     console.log("error", error);
-  //     setLoginError(error.toString());
-  //   } finally {
-  //     setSubmitting(false);
-  //   }
-  // }
-};
+      <section className={styles.top__section}>
+        <div>Breadcrumb</div>
+        <div>SearchMenu</div>
+        <div>View Cart Button</div>
+      </section>
 
-export default BrowsePage;
+      <h1>Games for Sale!</h1>
+
+      <div className={styles.content__container}>
+        <Paragraph content="Bits & Bots strive to give its members good deals on the newest games on the market for all members at the lowest cost possible." />
+
+        <Loader />
+
+        <section className={styles.cards__section}>
+          {props.games.map((game) => {
+            return (
+              <>
+                <Card key={game.id}>
+                  <h3 key={game.slug}>{game.name}</h3>
+                </Card>
+              </>
+            );
+          })}
+        </section>
+      </div>
+    </>
+  );
+}
+
+// ---------- GetStatic Props Function ---------- //
+
+//games path
+const url = CORS_FIX + BASE_URL + GAMES_URL;
+
+//User & method
+const credentials = HEADER;
+const gamesData = DATA;
+
+export async function getStaticProps() {
+  // in case there is an error in the API call
+  // we'll send an empty array in as the prop
+  let games = [];
+
+  try {
+    const response = await axios.post(url, credentials, gamesData);
+    // the log here will happen on the server, you can check the console in your editor
+    console.log(response.games);
+    // the array is on the response.data.data property
+    games = response.gamesData.slug;
+  } catch (error) {
+    console.log(error);
+  }
+
+  // the props object we return here will become the props in the component
+  return {
+    props: {
+      games: games,
+    },
+  };
+}

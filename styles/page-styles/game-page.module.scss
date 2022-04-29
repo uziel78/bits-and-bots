@@ -1,0 +1,27 @@
+@import "../variables";
+
+.top__section {
+  min-height: 50px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  color: $primary-light;
+  background-color: $secondary-dark;
+  border-top: 1px solid $primary-light;
+  border-bottom: 1px solid $primary-light;
+}
+
+.content__container {
+  align-content: center;
+  padding: 100px 40px;
+
+  .cards__section {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+    grid-gap: 4rem;
+    justify-items: center;
+    align-items: center;
+  }
+}

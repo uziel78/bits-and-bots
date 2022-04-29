@@ -72,6 +72,11 @@ button {
   margin: 10px 0px;
 }
 
+.exit__btn--right {
+  background-color: darken($main-highlight, 15%);
+  float: right;
+}
+
 .terms {
   font-size: 0.8rem;
   margin: 10px 0px;

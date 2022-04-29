@@ -106,7 +106,11 @@ const LoginForm = () => {
               <button type="submit" disabled={submitting}>
                 {submitting ? "Logging In..." : "Login"}
               </button>
-              <button type="button" className="exit__btn" onClick={exitHandler}>
+              <button
+                type="button"
+                className="exit__btn--right"
+                onClick={exitHandler}
+              >
                 Back
               </button>
             </div>
