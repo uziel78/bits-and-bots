@@ -1,7 +1,7 @@
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 The project is hosted on Vercel's servers and can be found here:
 
-https://bits-and-bots.vercel.app/
+https://bitsandbots.vercel.app/
 
 
 
