@@ -18,10 +18,10 @@ function Navbar() {
   // render logo on navbar plus conditional logout button
   return (
     <>
-      <header className={styles.navbar}>
-        <Logo />
+      <header className={styles.navbar} aria-label="navbar">
+        <Logo aria-label="logo" />
 
-        <nav className={styles.navbar__navigation}>
+        <nav className={styles.navbar__navigation} aria-label="logout button">
           {auth ? (
             <ul>
               <li className={styles.navigation__link}>

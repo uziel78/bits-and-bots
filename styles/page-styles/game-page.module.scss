@@ -1,6 +1,9 @@
 @import "../variables";
 
 .top__section {
+  position: absolute;
+  top: 81px;
+  left: 0px;
   min-height: 50px;
   width: 100%;
   display: flex;

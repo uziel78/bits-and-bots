@@ -22,15 +22,18 @@ library.add(
 
 function Footer() {
   return (
-    <footer className={styles.footer}>
+    <footer className={styles.footer} aria-label="footer">
       <div className={styles.border__box}></div>
       <div className={styles.border__box}></div>
-      <div className={styles.slogan}>
+      <div className={styles.slogan} aria-label="h1 slogan in footer">
         <h1>The latest games, Fast &#38; Easy!</h1>
       </div>
       <div className={styles.footer__flexbox}>
         <div className={styles.container}>
-          <address className={styles.address}>
+          <address
+            className={styles.address}
+            aria-label="address section in footer"
+          >
             <p>Bits &#38; Bots</p>
             <p>Strandgaten 195</p>
             <p>5004, Bergen</p>
@@ -49,7 +52,7 @@ function Footer() {
             </p>
           </address>
         </div>
-        <div className={styles.social}>
+        <div className={styles.social} aria-label="social section in footer">
           <a href="https://discord.com/" target="_blank" rel="noreferrer">
             <FontAwesomeIcon icon={faDiscord} />
           </a>
@@ -64,7 +67,7 @@ function Footer() {
           </a>
         </div>
       </div>
-      <div className={styles.legal}>
+      <div className={styles.legal} aria-label="copyright">
         <p>Copyright &copy; Bits &#38; Bots 2022</p>
       </div>
     </footer>
