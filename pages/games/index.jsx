@@ -54,23 +54,12 @@ function BrowsePage(props) {
               return (
                 <>
                   <Card key={game.id}>
-                    <h3>{game.name}</h3>
-                    <p>{game.url}</p>
+                    <h3 key={game.slug}>{game.name}</h3>
+                    <p key={game.slug}>{game.url}</p>
                   </Card>
                 </>
               );
             })}
-            {/* cards below are just placeholders for style-testing purposes */}
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
-            <Card></Card>
           </section>
         </div>
       </div>
@@ -92,18 +81,13 @@ export async function getStaticProps() {
   let games = [];
 
   try {
-    const response = await axios.post(url, { body: "fields *;" }, { HEADER });
+    const response = await axios.post(url, "fields *;", HEADER);
     // the log here will happen on the server, you can check the console in your editor
 
     // the array is on the response.data property
-    const games = response.data;
+    games = response.data;
   } catch (error) {
     console.log(error);
-  }
-
-  // show loader if no games
-  if (!games) {
-    return <Loader />;
   }
 
   // example if no object returned from props, automatically takes one to the 404 page.
