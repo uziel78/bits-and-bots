@@ -12,7 +12,7 @@ library.add(faCartShopping);
 
 //import NextBreadcrumbs from "../../components/layout/NextBreadcrumbs";
 import axios from "axios";
-import { CORS_FIX, BASE_URL, GAMES_URL, HEADER } from "../../pages/api/api";
+import { BASE_URL, GAMES_URL, HEADER } from "../../pages/api/api";
 import styles from "../../styles/page-styles/game-page.module.scss";
 
 // ---------- Browse Page Function ---------- //
@@ -26,51 +26,53 @@ function BrowsePage(props) {
     <>
       <Meta description="browse games page" />
 
-      <section className={styles.top__section} aria-label="sub-menu section">
-        <div>Crumbs...</div>
-        <div>
-          <SearchMenu />
-        </div>
-        <div>
-          <Link href="/games/store">
-            <a>
-              <FontAwesomeIcon icon={faCartShopping} />
-            </a>
-          </Link>
-        </div>
-      </section>
-
-      <h1 aria-label="h1 heading">Games for Sale!</h1>
-
-      <div className={styles.content__container} aria-label="paragraph">
-        <Paragraph content="Bits & Bots strive to give its members good deals on the newest games on the market for all members at the lowest cost possible." />
-
-        <section
-          className={styles.cards__section}
-          aria-label="game-cards section"
-        >
-          {props.games.map((game) => {
-            return (
-              <>
-                <Card key={game.id}>
-                  <h3>{game.name}</h3>
-                  <p>{game.url}</p>
-                </Card>
-              </>
-            );
-          })}
-          {/* cards below are just placeholders for style-testing purposes */}
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
-          <Card></Card>
+      <div className={styles.page__wrapper}>
+        <section className={styles.top__section} aria-label="sub-menu section">
+          <div>Crumbs...</div>
+          <div>
+            <SearchMenu />
+          </div>
+          <div>
+            <Link href="/games/store">
+              <a>
+                <FontAwesomeIcon icon={faCartShopping} />
+              </a>
+            </Link>
+          </div>
         </section>
+
+        <h1 aria-label="h1 heading">Games for Sale!</h1>
+
+        <div className={styles.content__container} aria-label="paragraph">
+          <Paragraph content="Bits & Bots strive to give its members good deals on the newest games on the market for all members at the lowest cost possible." />
+
+          <section
+            className={styles.cards__section}
+            aria-label="game-cards section"
+          >
+            {props.games.map((game) => {
+              return (
+                <>
+                  <Card key={game.id}>
+                    <h3>{game.name}</h3>
+                    <p>{game.url}</p>
+                  </Card>
+                </>
+              );
+            })}
+            {/* cards below are just placeholders for style-testing purposes */}
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+            <Card></Card>
+          </section>
+        </div>
       </div>
     </>
   );
@@ -83,19 +85,18 @@ export async function getStaticProps() {
   const url = BASE_URL + GAMES_URL;
 
   //User & data
-  const credentials = HEADER;
+  //const credentials = HEADER;
 
   // in case there is an error in the API call
   // we'll send an empty array in as the prop
   let games = [];
 
   try {
-    const response = await axios.post(url, credentials);
+    const response = await axios.post(url, { body: "fields *;" }, { HEADER });
     // the log here will happen on the server, you can check the console in your editor
 
     // the array is on the response.data property
-    const data = response.data;
-    const games = JSON.parse(data);
+    const games = response.data;
   } catch (error) {
     console.log(error);
   }

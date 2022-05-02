@@ -6,7 +6,7 @@ const SearchMenu = () => {
   return (
     <>
       <div className={styles.search__container}>
-        <label className={styles.label} forHTML="category">
+        <label className={styles.label} htmlFor="category">
           Game Category{" "}
         </label>
         <select className={styles.select}>
