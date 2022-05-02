@@ -1,8 +1,9 @@
 import Link from "next/link";
 import Meta from "../../components/common/Meta";
-import Loader from "../../components/common/Loader";
+//import Loader from "../../components/common/Loader";
 import Paragraph from "../../components/common/Paragraph";
 import Card from "../../components/game-page/Card";
+import Image from "next/image";
 import SearchMenu from "../../components/game-page/SearchMenu";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -18,7 +19,7 @@ import styles from "../../styles/page-styles/game-page.module.scss";
 // ---------- Browse Page Function ---------- //
 
 function BrowsePage(props) {
-  const { id, name, url } = props;
+  const { id, src, name, url, summary } = props;
   //rendered from getStaticProps
   console.log(props);
 
@@ -45,23 +46,29 @@ function BrowsePage(props) {
 
         <div className={styles.content__container} aria-label="paragraph">
           <Paragraph content="Bits & Bots strive to give its members good deals on the newest games on the market for all members at the lowest cost possible." />
-
-          <section
-            className={styles.cards__section}
-            aria-label="game-cards section"
-          >
-            {props.games.map((game) => {
-              return (
-                <>
-                  <Card key={game.id}>
-                    <h3 key={game.slug}>{game.name}</h3>
-                    <p key={game.slug}>{game.url}</p>
-                  </Card>
-                </>
-              );
-            })}
-          </section>
         </div>
+
+        <section
+          className={styles.cards__section}
+          aria-label="game-cards section"
+        >
+          {props.games.map((game) => {
+            return (
+              <>
+                <Card key={game.id} aria-label={game.name}>
+                  {/* <Image
+                    src={game.url}
+                    alt="Cover of the different games on front page"
+                  /> */}
+                  <h3>{game.name}</h3>
+                  <Link href={"/" + game.id}>
+                    <a>more info</a>
+                  </Link>
+                </Card>
+              </>
+            );
+          })}
+        </section>
       </div>
     </>
   );
@@ -73,15 +80,16 @@ export async function getStaticProps() {
   //games path
   const url = BASE_URL + GAMES_URL;
 
-  //User & data
-  //const credentials = HEADER;
-
   // in case there is an error in the API call
   // we'll send an empty array in as the prop
   let games = [];
 
   try {
-    const response = await axios.post(url, "fields *;", HEADER);
+    const response = await axios.post(
+      url,
+      "fields name, genres.*, artworks.*, cover.*, rating, screenshots.*, videos.*; where release_dates.platform = (48,49); limit 50;",
+      HEADER
+    );
     // the log here will happen on the server, you can check the console in your editor
 
     // the array is on the response.data property

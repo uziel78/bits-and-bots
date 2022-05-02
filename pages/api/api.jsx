@@ -5,8 +5,9 @@ export const GAMES_URL = "/games";
 export const ACCESS_TOKEN = "6o52f4qwo49mjqjtxaz4ar9yzd461g";
 export const HEADER = {
   headers: {
+    Accept: "application/json",
     "Client-ID": "ay0ffinneufqegvu1shkkiwgiqb3nf",
     Authorization: "Bearer 6o52f4qwo49mjqjtxaz4ar9yzd461g",
-    "Content-Type": "text/plain",
+    //"Content-Type": "text/plain",
   },
 };

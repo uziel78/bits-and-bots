@@ -11,6 +11,7 @@ function Logo() {
             width={400}
             height={80}
             alt="image showing the bits & bots loge"
+            priority
           />
         </a>
       </Link>
