@@ -19,7 +19,7 @@ import styles from "../../styles/page-styles/game-page.module.scss";
 // ---------- Browse Page Function ---------- //
 
 function BrowsePage(props) {
-  const { id, src, name, url, summary } = props;
+  const { id } = props;
   //rendered from getStaticProps
   console.log(props);
 
@@ -27,26 +27,24 @@ function BrowsePage(props) {
     <>
       <Meta description="browse games page" />
 
-      <div className={styles.page__wrapper}>
-        <section className={styles.top__section} aria-label="sub-menu section">
-          <div>Crumbs...</div>
-          <div>
-            <SearchMenu />
-          </div>
-          <div>
-            <Link href="/games/store">
-              <a>
-                <FontAwesomeIcon icon={faCartShopping} />
-              </a>
-            </Link>
-          </div>
-        </section>
-
-        <h1 aria-label="h1 heading">Games for Sale!</h1>
-
-        <div className={styles.content__container} aria-label="paragraph">
-          <Paragraph content="Bits & Bots strive to give its members good deals on the newest games on the market for all members at the lowest cost possible." />
+      <section className={styles.top__section} aria-label="sub-menu section">
+        <div>Crumbs...</div>
+        <div>
+          <SearchMenu />
         </div>
+        <div>
+          <Link href="/games/store">
+            <a>
+              <FontAwesomeIcon icon={faCartShopping} />
+            </a>
+          </Link>
+        </div>
+      </section>
+
+      <h1 aria-label="h1 heading">Games for Sale!</h1>
+
+      <div className={styles.content__container} aria-label="paragraph">
+        <Paragraph content="Bits & Bots strive to give its members good deals on the newest games on the market for all members at the lowest cost possible." />
 
         <section
           className={styles.cards__section}
@@ -56,13 +54,15 @@ function BrowsePage(props) {
             return (
               <>
                 <Card key={game.id} aria-label={game.name}>
-                  {/* <Image
-                    src={game.url}
-                    alt="Cover of the different games on front page"
-                  /> */}
-                  <h3>{game.name}</h3>
-                  <Link href={"/" + game.id}>
-                    <a>more info</a>
+                  <Image
+                    src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
+                    alt="Cover of the different games on browse games page"
+                    width={300}
+                    height={300}
+                  />
+                  <h4>{game.name}</h4>
+                  <Link href={"/" + "${game.id}"}>
+                    <a>more info...</a>
                   </Link>
                 </Card>
               </>
@@ -87,7 +87,7 @@ export async function getStaticProps() {
   try {
     const response = await axios.post(
       url,
-      "fields name, genres.*, artworks.*, cover.*, rating, screenshots.*, videos.*; where release_dates.platform = (48,49); limit 50;",
+      "fields name, genres.*, artworks.*, cover.*, rating, screenshots.*, videos.*; where release_dates.platform = (48,49); limit 30;",
       HEADER
     );
     // the log here will happen on the server, you can check the console in your editor

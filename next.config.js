@@ -2,7 +2,7 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["www.igdb.com"],
+    domains: ["images.igdb.com"],
   },
 };
 
