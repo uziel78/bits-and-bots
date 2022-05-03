@@ -7,9 +7,12 @@ import Image from "next/image";
 import SearchMenu from "../../components/game-page/SearchMenu";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCartShopping,
+  faArrowRight,
+} from "@fortawesome/free-solid-svg-icons";
 
-library.add(faCartShopping);
+library.add(faCartShopping, faArrowRight);
 
 //import NextBreadcrumbs from "../../components/layout/NextBreadcrumbs";
 import axios from "axios";
@@ -19,7 +22,7 @@ import styles from "../../styles/page-styles/game-page.module.scss";
 // ---------- Browse Page Function ---------- //
 
 function BrowsePage(props) {
-  const { id } = props;
+  const { games } = props;
   //rendered from getStaticProps
   console.log(props);
 
@@ -27,48 +30,61 @@ function BrowsePage(props) {
     <>
       <Meta description="browse games page" />
 
-      <section className={styles.top__section} aria-label="sub-menu section">
-        <div>Crumbs...</div>
-        <div>
-          <SearchMenu />
-        </div>
-        <div>
-          <Link href="/games/store">
-            <a>
-              <FontAwesomeIcon icon={faCartShopping} />
-            </a>
-          </Link>
-        </div>
-      </section>
-
-      <h1 aria-label="h1 heading">Games for Sale!</h1>
-
-      <div className={styles.content__container} aria-label="paragraph">
-        <Paragraph content="Bits & Bots strive to give its members good deals on the newest games on the market for all members at the lowest cost possible." />
-
-        <section
-          className={styles.cards__section}
-          aria-label="game-cards section"
-        >
-          {props.games.map((game) => {
-            return (
-              <>
-                <Card key={game.id} aria-label={game.name}>
-                  <Image
-                    src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
-                    alt="Cover of the different games on browse games page"
-                    width={300}
-                    height={300}
-                  />
-                  <h4>{game.name}</h4>
-                  <Link href={"/" + "${game.id}"}>
-                    <a>more info...</a>
-                  </Link>
-                </Card>
-              </>
-            );
-          })}
+      <div className={styles.game__page}>
+        <section className={styles.top__section} aria-label="sub-menu section">
+          <div>
+            <SearchMenu />
+          </div>
+          <div>
+            <Link href="/games/store">
+              <a>
+                <FontAwesomeIcon icon={faCartShopping} />
+              </a>
+            </Link>
+          </div>
         </section>
+
+        <h1 aria-label="h1 heading">Games for Sale!</h1>
+
+        <div className={styles.content__container} aria-label="paragraph">
+          <Paragraph content="Bits & Bots strive to give its members good deals on the newest games on the market for all members at the lowest cost possible." />
+
+          <section
+            className={styles.cards__section}
+            aria-label="game-cards section"
+          >
+            {games.map((game) => {
+              return (
+                <>
+                  <Card key={game.id} aria-label={game.name}>
+                    <div className={styles.card__container}>
+                      <Image
+                        src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
+                        alt="Cover of the different games on browse games page"
+                        width={300}
+                        height={300}
+                      />
+                      <h4>{game.name}</h4>
+                      <Link
+                        href={`${"/"}${game.id}`}
+                        aria-label={`Details link to ${game.name}`}
+                      >
+                        <a>
+                          <span>
+                            {" "}
+                            <FontAwesomeIcon icon={faArrowRight} />
+                          </span>{" "}
+                          Details
+                        </a>
+                      </Link>
+                    </div>
+                  </Card>
+                </>
+              );
+            })}
+          </section>
+        </div>
+        <div />
       </div>
     </>
   );
@@ -87,7 +103,7 @@ export async function getStaticProps() {
   try {
     const response = await axios.post(
       url,
-      "fields name, genres.*, artworks.*, cover.*, rating, screenshots.*, videos.*; where release_dates.platform = (48,49); limit 30;",
+      "fields name, genres.*, artworks.*, cover.*, rating, screenshots.*, videos.*; where release_dates.platform = (48,49); limit 60;",
       HEADER
     );
     // the log here will happen on the server, you can check the console in your editor
@@ -98,10 +114,10 @@ export async function getStaticProps() {
     console.log(error);
   }
 
-  // example if no object returned from props, automatically takes one to the 404 page.
-  // if (games.length === 0) {
-  //   return { notFound: true };
-  // }
+  //example if no object returned from props, automatically takes one to the 404 page.
+  if (games.length === 0) {
+    return { notFound: true };
+  }
 
   // shows update in development server
   console.log("(RE-)Generating...");
