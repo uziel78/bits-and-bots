@@ -17,23 +17,21 @@ function Navbar() {
 
   // render logo on navbar plus conditional logout button
   return (
-    <>
-      <header className={styles.navbar} aria-label="navbar">
-        <Logo aria-label="logo" />
+    <header className={styles.navbar} aria-label="navbar">
+      <Logo aria-label="logo" />
 
-        <nav className={styles.navbar__navigation} aria-label="logout button">
+      <nav className={styles.navbar__navigation} aria-label="logout button">
+        <ul>
           {auth ? (
-            <ul>
-              <li className={styles.navigation__link}>
-                <Link href="/">
-                  <a onClick={HandleLogout}>Logout</a>
-                </Link>
-              </li>
-            </ul>
+            <li className={styles.navigation__link}>
+              <Link href="/">
+                <a onClick={HandleLogout}>Logout</a>
+              </Link>
+            </li>
           ) : null}
-        </nav>
-      </header>
-    </>
+        </ul>
+      </nav>
+    </header>
   );
 }
 

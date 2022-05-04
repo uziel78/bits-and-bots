@@ -1,0 +1,58 @@
+@import "../variables";
+@import "../mixins";
+
+.game__page {
+  max-width: 1920px;
+  //position: relative;
+
+  .top__section {
+    position: absolute;
+    top: 81px;
+    left: 0px;
+    min-height: 50px;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    color: $primary-light;
+    background-color: darken($secondary-dark, 15%);
+    border-top: 1px solid $primary-light;
+    border-bottom: 1px solid $primary-light;
+  }
+
+  .content__container {
+    @include center;
+    padding-bottom: 100px;
+  }
+
+  .card__container {
+    h4 {
+      color: $primary-light;
+      padding: 0.5rem;
+      text-align: center;
+      padding-bottom: 2rem;
+    }
+
+    p {
+      padding: 0.5rem;
+    }
+
+    span {
+      color: $primary-light;
+    }
+
+    a {
+      padding: 0.5rem;
+      margin-left: 33%;
+      color: $primary-text;
+
+      &:hover,
+      &:focus,
+      &:active {
+        color: $secondary-highlight;
+        text-decoration: underline;
+      }
+    }
+  }
+}

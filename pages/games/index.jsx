@@ -13,8 +13,6 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 library.add(faCartShopping, faArrowRight);
-
-//import NextBreadcrumbs from "../../components/layout/NextBreadcrumbs";
 import axios from "axios";
 import { BASE_URL, GAMES_URL, HEADER } from "../../pages/api/api";
 import styles from "../../styles/page-styles/game-page.module.scss";
@@ -23,7 +21,6 @@ import styles from "../../styles/page-styles/game-page.module.scss";
 
 function BrowsePage(props) {
   const { games } = props;
-  //rendered from getStaticProps
   console.log(props);
 
   return (
@@ -47,7 +44,7 @@ function BrowsePage(props) {
         <h1 aria-label="h1 heading">Games for Sale!</h1>
 
         <div className={styles.content__container} aria-label="paragraph">
-          <Paragraph content="Bits & Bots strive to give its members good deals on the newest games on the market for all members at the lowest cost possible." />
+          <Paragraph content="Bits & Bots strive to give its members great deals on the newest games on the market for all members at the lowest cost possible." />
 
           <section
             className={styles.cards__section}
@@ -55,31 +52,29 @@ function BrowsePage(props) {
           >
             {games.map((game) => {
               return (
-                <>
-                  <Card aria-label={game.name}>
-                    <div className={styles.card__container}>
-                      <Image
-                        src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
-                        alt="Cover of the different games on browse games page"
-                        width={300}
-                        height={300}
-                      />
-                      <h4>{game.name}</h4>
-                      <Link
-                        href={`/games/${game.id}`}
-                        aria-label={`Details link to ${game.name}`}
-                      >
-                        <a>
-                          <span>
-                            {" "}
-                            <FontAwesomeIcon icon={faArrowRight} />
-                          </span>{" "}
-                          Details
-                        </a>
-                      </Link>
-                    </div>
-                  </Card>
-                </>
+                <Card key={game.id} aria-label={game.name}>
+                  <div className={styles.card__container}>
+                    <Image
+                      src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
+                      alt="Cover of the different games on browse games page"
+                      width={300}
+                      height={300}
+                    />
+                    <h4>{game.name}</h4>
+                    <Link
+                      href={`/games/${game.id}`}
+                      aria-label={`Details link to ${game.name}`}
+                    >
+                      <a>
+                        <span>
+                          {" "}
+                          <FontAwesomeIcon icon={faArrowRight} />
+                        </span>{" "}
+                        Details
+                      </a>
+                    </Link>
+                  </div>
+                </Card>
               );
             })}
           </section>
