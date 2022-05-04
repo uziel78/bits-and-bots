@@ -56,7 +56,7 @@ function BrowsePage(props) {
             {games.map((game) => {
               return (
                 <>
-                  <Card key={game.id} aria-label={game.name}>
+                  <Card aria-label={game.name}>
                     <div className={styles.card__container}>
                       <Image
                         src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
@@ -66,7 +66,7 @@ function BrowsePage(props) {
                       />
                       <h4>{game.name}</h4>
                       <Link
-                        href={`${"/"}${game.id}`}
+                        href={`/games/${game.id}`}
                         aria-label={`Details link to ${game.name}`}
                       >
                         <a>
@@ -115,9 +115,9 @@ export async function getStaticProps() {
   }
 
   //example if no object returned from props, automatically takes one to the 404 page.
-  if (games.length === 0) {
-    return { notFound: true };
-  }
+  // if (games.length === 0) {
+  //   return { notFound: true };
+  // }
 
   // shows update in development server
   console.log("(RE-)Generating...");
@@ -127,7 +127,7 @@ export async function getStaticProps() {
     props: {
       games: games,
     },
-    revalidate: 30,
+    revalidate: 300,
   };
 }
 
