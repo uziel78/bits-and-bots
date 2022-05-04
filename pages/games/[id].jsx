@@ -37,7 +37,7 @@ export default function Details({ game }) {
           </div>
         </section>
 
-        <h1>Game: {game.name}</h1>
+        <h1>Game: {game.id}</h1>
 
         <section
           className={styles.cards__section}
@@ -50,7 +50,7 @@ export default function Details({ game }) {
                 width={300}
                 height={300}
               /> */}
-            <h4>{game.name}</h4>
+            <h4>{game.id}</h4>
           </Card>
         </section>
       </div>
@@ -90,13 +90,13 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context) {
   const id = context.params.id;
-  //const url = `${BASE_URL + GAMES_URL}/${params.id}`;
+  const propsUrl = BASE_URL + GAMES_URL;
 
-  let game = null;
+  let game = [];
 
   try {
     const response = await axios.post(
-      url + id,
+      propsUrl + id,
       "fields name, genres.*, artworks.*, cover.*, rating, screenshots.*, videos.*; where release_dates.platform = (48,49); limit 60;",
       HEADER
     );
@@ -109,5 +109,6 @@ export async function getStaticProps(context) {
   // we are sending a prop called game in to the Game component up above
   return {
     props: { game: game },
+    revalidate: 300,
   };
 }
