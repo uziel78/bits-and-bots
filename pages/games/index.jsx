@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Meta from "../../components/common/Meta";
-//import Loader from "../../components/common/Loader";
+import Loader from "../../components/common/Loader";
 import Paragraph from "../../components/common/Paragraph";
 import Card from "../../components/game-page/Card";
 import Image from "next/image";
@@ -22,6 +22,10 @@ import styles from "../../styles/page-styles/game-page.module.scss";
 function BrowsePage(props) {
   const { games } = props;
   console.log(props);
+
+  if (!games) {
+    return <Loader />;
+  }
 
   return (
     <>

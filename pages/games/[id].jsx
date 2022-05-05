@@ -1,10 +1,8 @@
 import Link from "next/link";
 import Meta from "../../components/common/Meta";
-//import Loader from "../../components/common/Loader";
-import Paragraph from "../../components/common/Paragraph";
+import Loader from "../../components/common/Loader";
 import Card from "../../components/game-page/Card";
 import Image from "next/image";
-//import SearchMenu from "../../components/game-page/SearchMenu";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
@@ -22,6 +20,11 @@ import styles from "../../styles/page-styles/details-page.module.scss";
 // ---------- Details Page Function ---------- //
 
 export default function Details({ game }) {
+  if (!game) {
+    return <Loader />;
+  }
+
+  //render content on page and in Card Component
   return (
     <>
       <Meta description="game details page" />
@@ -44,12 +47,12 @@ export default function Details({ game }) {
           aria-label="game-cards section"
         >
           <Card key={game.id}>
-            {/* <Image
-                src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
-                alt="Cover of the different games on browse games page"
-                width={300}
-                height={300}
-              /> */}
+            <Image
+              src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
+              alt="Cover from the game: + ${game.name}"
+              width={300}
+              height={300}
+            />
             <h4>{game.id}</h4>
           </Card>
         </section>
@@ -66,7 +69,7 @@ export async function getStaticPaths() {
   try {
     const response = await axios.post(
       pathUrl,
-      "fields name, genres.*, artworks.*, cover.*, rating, screenshots.*, videos.*; where release_dates.platform = (48,49); limit 60;",
+      "fields name, genres.*, artworks.*, cover.*, rating, screenshots.*, videos.*; where cover != null; where videos != null; where release_dates.platform = (48,49); limit 60;",
       HEADER
     );
     console.log(response.data);
@@ -88,6 +91,8 @@ export async function getStaticPaths() {
 
 // ---------- GetStatic Props Function ---------- //
 
+//struggled with the "fields" documentation on igdb.com, to figure out how how to get a dynamic id to work.
+
 export async function getStaticProps(context) {
   const id = context.params.id;
   const propsUrl = BASE_URL + GAMES_URL;
@@ -97,10 +102,11 @@ export async function getStaticProps(context) {
   try {
     const response = await axios.post(
       propsUrl + id,
-      "fields name, genres.*, artworks.*, cover.*, rating, screenshots.*, videos.*; where release_dates.platform = (48,49); limit 60;",
+      "fields name, genres.*, artworks.*, cover.*, rating, screenshots.*, videos.*; where cover != null; where videos != null; where release_dates.platform = (48,49); limit 60;",
       HEADER
     );
     game = response.data;
+    console.log(game);
   } catch (error) {
     console.log(error);
   }
