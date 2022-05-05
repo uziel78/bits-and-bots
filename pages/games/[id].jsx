@@ -47,12 +47,12 @@ export default function Details({ game }) {
           aria-label="game-cards section"
         >
           <Card key={game.id}>
-            <Image
+            {/* <Image
               src={`https://images.igdb.com/igdb/image/upload/t_cover_big/${game.cover.image_id}.jpg`}
               alt="Cover from the game: + ${game.name}"
               width={300}
               height={300}
-            />
+            /> */}
             <h4>{game.id}</h4>
           </Card>
         </section>

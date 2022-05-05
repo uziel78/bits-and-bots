@@ -114,9 +114,9 @@ export async function getStaticProps() {
   }
 
   //example if no object returned from props, automatically takes one to the 404 page.
-  // if (games.length === 0) {
-  //   return { notFound: true };
-  // }
+  if (games.length === 0) {
+    return { notFound: true };
+  }
 
   // shows update in development server
   console.log("(RE-)Generating...");
