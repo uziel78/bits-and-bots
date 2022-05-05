@@ -101,7 +101,6 @@ export async function getStaticProps(context) {
       HEADER
     );
     game = response.data;
-    console.log(game);
   } catch (error) {
     console.log(error);
   }
